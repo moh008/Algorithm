@@ -9,8 +9,8 @@ class Solution:
         if nums[0] > lower:                 #lower의 값이 첫번째 element보다 작을경우 그 전 range도 append
             res.append([lower, nums[0] - 1])
 
-        for i in range(0, len(nums) - 1):   #바로 다음 element-1보다 현재 element가 작을 경우 element의 값 +1부터 다음 element의 값-1까지 append
-            if nums[i+1] - 1 > nums[i]:
+        for i in range(0, len(nums) - 1):   #바로 다음 element-1보다 현재 element가 작을 경우 element의 값 +1부터 
+            if nums[i+1] - 1 > nums[i]:     #다음 element의 값-1까지 append
                 res.append([nums[i] + 1, nums[i+1] - 1])
         
         if nums[-1] < upper:                #upper의 값이 마지막 element보다 클 경우 마지막 element+1부터 upper까지 append
