@@ -5,7 +5,7 @@ n 은 정렬때문에 log(n)은 left right 포인터가 각각 중앙을 향해�
 """
 class Solution:
     def twoSumLessThanK(self, nums: List[int], k: int) -> int:
-        sorted_nums = nums.sort()
+        nums.sort()
         left, right = 0, len(nums)-1
         max_sum = -1
         while left < right:
