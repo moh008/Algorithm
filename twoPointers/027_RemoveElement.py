@@ -1,3 +1,6 @@
+"""
+결과는 간단한데 왤케 열받지?
+"""
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
         k = 0
