@@ -1,4 +1,4 @@
-def addTwoStrings(num1: str, num2: str):
+def addTwoStrings(num1: str, num2:str) -> str:
     if '.' in num1:
         int_part1, dec_part1 = num1.split('.')
     else:
@@ -8,9 +8,9 @@ def addTwoStrings(num1: str, num2: str):
     else:
         int_part2, dec_part2 = num2, ''
 
-    max_len_dec = max(len(dec_part1), len(dec_part2))
-    dec_part1 = dec_part1.ljust(max_len_dec, '0')
-    dec_part2 = dec_part2.ljust(max_len_dec, '0')
+    max_dec_len = max(len(dec_part1), len(dec_part2))
+    dec_part1 = dec_part1.ljust(max_dec_len, '0')
+    dec_part2 = dec_part2.ljust(max_dec_len, '0')
 
     dec_sum, carry = addTwoIntegerStrings(dec_part1, dec_part2, True)
     int_sum, _ = addTwoIntegerStrings(int_part1, int_part2, False, carry)
@@ -21,7 +21,8 @@ def addTwoStrings(num1: str, num2: str):
         return int_sum
     else:
         return f"{int_sum}.{dec_sum}"
-def addTwoIntegerStrings(num1: str, num2: str, isDecimal: bool, carry: int = 0) -> tuple[str, int]:
+    
+def addTwoIntegerStrings(num1: str, num2: str, isDecimal:bool, carry: int = 0) -> tuple[str, int]:
     i, j = len(num1) - 1, len(num2) - 1
     result = []
     while i >= 0 or j >= 0 or carry:
@@ -38,6 +39,7 @@ def addTwoIntegerStrings(num1: str, num2: str, isDecimal: bool, carry: int = 0) 
         result.append(str(currSum % 10))
         i -= 1
         j -= 1
+    
     total_sum = ''.join(result[::-1])
     if isDecimal:
         if len(total_sum) > len(num1):
@@ -49,6 +51,8 @@ def addTwoIntegerStrings(num1: str, num2: str, isDecimal: bool, carry: int = 0) 
             return '0', 0
         else:
             return total_sum, 0
+
+
 
 print(addTwoStrings("3.14", "0.9"))
 print(addTwoStrings("999.9", "0.1"))  # "1000"
