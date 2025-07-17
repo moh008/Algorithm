@@ -24,7 +24,7 @@ class Solution:
       node = dummy = ListNode(-1)
       carry = 0
 
-      while l1 or l2:                                       #l1, l2 둘다 길이가 맞는 부분까지만
+      while l1 and l2:                                       #l1, l2 둘다 길이가 맞는 부분까지만
         carry, digit = divmod(l1.val + l2.val + carry, 10)  #divmod로 몫과 나머지를 동시에 산출 각각 carry와 digit에 할당
         node.next = ListNode(digit)                         #결과노드를 연장하여 다음으로
         l1, l2, node = l1.next, l2.next, node.next          #l1, l2, 결과 노드들 모두 다음으로 이동
@@ -38,4 +38,4 @@ class Solution:
         
       if carry:                                             #두 링트리스트가 끝에 다다랐는데 캐리값이 남아있을경우
         node.next = ListNode(carry)                         #캐리값을 위한 노드 하나 연장
-      return dummy                                          #더미노드 다음부터 차례로 반환 (결과값이 역순으로 나옴)
+      return dummy.next                                          #더미노드 다음부터 차례로 반환 (결과값이 역순으로 나옴)
