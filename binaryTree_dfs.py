@@ -10,3 +10,27 @@ def preorderTraversalfor(root):         #위처럼 왼쪽 오른쪽 지정하지
   for child in [root.left, root.right]:
     if child:
       preorderTraversalfor(child)
+
+#Subsets
+def subsets(L):
+  backtracking([], 0, L)
+
+def backtracking(picked, i, L):
+  if i == len(L):
+    print(picked)
+  else:
+    backtracking(picked + [L[i]], i+1, L)
+    backtracking(picked, i+1, L)
+
+#Permutations
+def permutations(nums):
+  backtracking([], nums)
+
+def backtracking(perm, nums):
+  if len(perm) == len(nums):
+    print(perm)
+    return
+
+  for num in nums:
+    if not num in perm:
+      backtracking(perm+[num], nums)
