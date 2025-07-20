@@ -5,14 +5,19 @@
 """
 class Solution:
   def isValid(self, s: str) -> bool:
-    if len(s) == 0:
-      return False
-    stack = []
-    for i in range(len(s)):
-      if s[i] in ("(", "{", "["):
-        stack.append(s[i])
-      elif stack[-1] == "(" and s[i] == ")" or stack[-1] == "[" and s[i] == "]" or stack[-1] == "{" and s[i] == "}":
-        stack.pop()
-      else:
+      if len(s) == 0:
         return False
-    if len(stack) == 0: return True
+      stack = []
+
+      for i in s:
+          if i in ("(", "[", "{"):
+              stack.append(i)
+          elif len(stack) >= 1:
+              if stack[-1] == "(" and i == ")" or stack[-1] == "[" and i == "]" or stack[-1] == "{" and i == "}":
+                  stack.pop()
+              else:
+                  return False
+          else:
+              return False
+      if len(stack) == 0: return True 
+      else: return False
